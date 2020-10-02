@@ -3,6 +3,9 @@ int SubsetSum(vector<int> &A, int B) {
     
     vector< vector<int> > dp( A.size()+1, vector<int>(B+1,0) );
     
+    // i is a pointer to the vector it indicates the current item
+    // j is a pointer to the subset sum at curr time
+    
     for(int i=1;i<=A.size();i++)
     {
         for(int j=1;j<=B;j++)
