@@ -1,0 +1,19 @@
+int minDiffSubsets(int pointer, int first, int second, vector<int> &A, vector<vector< int>> &dp)
+{
+	if (pointer < 0) return abs(first - second);
+	if (dp[pointer][first] == -1)
+	{
+		dp[pointer][first] = min(minDiffSubsets(pointer - 1, first + A[pointer], second, A, dp), minDiffSubsets(pointer - 1, first, second + A[pointer], A, dp));
+	}
+	return dp[pointer][first];
+}
+
+int solve(vector<int> &A)
+{
+
+	int sum = 0;
+	for (int i = 0; i < A.size(); i++) sum += A[i];
+	vector<vector < int>> dp(A.size(), vector<int> (sum + 1, -1));
+
+	return minDiffSubsets(A.size() - 1, 0, 0, A, dp);
+}
