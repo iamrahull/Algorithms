@@ -17,6 +17,8 @@ int knapSack(int N, int W, int val[], int wt[])
         // code here
     }
     
+    Top Down Approach
+    
     int rec(int ptr,int val[], int wt[], vector<vector<int> >&dp,int W)
     {
         if(ptr<0) return 0;
