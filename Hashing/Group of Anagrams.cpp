@@ -13,3 +13,6 @@ vector<vector<int> > anagrams(const vector<string> &A) {
     }
     return groupOfAnagrams;
 }
+
+Time Complexity : O(n*m*log*m) { n =  size of the list given by user , m = size of max string in the list of string given by user }
+Space Complxity : O(n) { first is for hashmap of max n size }
