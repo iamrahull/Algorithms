@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 //  Minimum Path Sum in Grid
 	// Recursive Time => O(2^n), Space => O(2^n)
     int rec(int row, int col, vector<vector<int>>& grid){
