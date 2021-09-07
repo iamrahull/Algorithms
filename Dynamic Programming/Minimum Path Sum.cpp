@@ -1,26 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
 //  Minimum Path Sum in Grid
-	// Recursive Time => O(2^n), Space => O(2^n)
-	int rec(int row, int col, vector<vector<int>>& grid){
+	// Recursive: Time => O(2^n), Space => O(2^n)
+	int recursiveFuncton(int row, int col, vector<vector<int>>& grid){
 		
 		if(row >= grid.size() || col >=grid[0].size()) return INT_MAX;
 		if(row == grid.size()-1 && col ==grid[0].size()-1) return grid[row][col];
-		return min(rec(row + 1, col, grid), rec(row, col + 1, grid)) + grid[row][col];
+		return min(recursiveFuncton(row + 1, col, grid), recursiveFuncton(row, col + 1, grid)) + grid[row][col];
 	}
 	int minPathSum(vector<vector<int>>& grid) {
 		
-		return rec(0, 0, grid);
+		return recursiveFuncton(0, 0, grid);
 	}
 
-	// Recursion + Memorization => O(n*n), O(n*n)
-	int rec(int row, int col, vector<vector<int>>& grid, vector < vector < int > >&dp){
+	// Recursion + Memorization: Time => O(n*n) , Space => O(n*n)
+	int recursiveFuncton(int row, int col, vector<vector<int>>& grid, vector < vector < int > >&dp){
 		
 		if(row >= grid.size() || col >=grid[0].size()) return INT_MAX;
 		if(row == grid.size()-1 && col ==grid[0].size()-1) return grid[row][col];   
 		if(dp[row][col] == -1){
 
-			dp[row][col] =  min(rec(row + 1, col, grid, dp), rec(row, col + 1, grid, dp)) + grid[row][col];
+			dp[row][col] =  min(recursiveFuncton(row + 1, col, grid, dp), recursiveFuncton(row, col + 1, grid, dp)) + grid[row][col];
 		}
 		return dp[row][col];
     	}
@@ -28,7 +28,7 @@ using namespace std;
 		
 		if(grid.size() == 0 || grid[0].size() == 0)return 0;
 		vector < vector < int > > dp(grid.size() , vector < int > (grid[0].size() , -1 ));
-		return rec(0, 0, grid, dp);
+		return recursiveFuncton(0, 0, grid, dp);
 	}
 
 	// Iterative+Tabulation: Time => O(n*n) , Space => O(n*n)
