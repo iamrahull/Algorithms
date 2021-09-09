@@ -2,7 +2,7 @@
 
 using namespace std;
 //  Triangle
-// Recursive: Time => O(2^n), Auxiliary  => O(2^n)
+// Recursive: Time => O(2^n), Auxiliary  => O(n)
 int recursiveFunction(int row, int index, vector < vector < int > > & triangle) {
     if (row == triangle.size() - 1) return triangle[row][index];
     return min(recursiveFunction(row + 1, index, triangle), recursiveFunction(row + 1, index + 1, triangle)) + triangle[row][index];
@@ -56,7 +56,7 @@ int minimumTotal(vector < vector < int >> & triangle) {
     return minimumSum;
 }
 
-// Iterative + Tabulation: Time => O(n*n) , Space => O(n) Improved linear space complexity
+// Iterative + Tabulation: Time => O(n*n) , Space => O(n) with linear space complexity
 int minimumTotal(vector < vector < int >> & triangle) {
     if (triangle.size() == 0) return 0;
     vector < int > dp(triangle.size(), INT_MAX);
@@ -69,7 +69,7 @@ int minimumTotal(vector < vector < int >> & triangle) {
     return *min_element(dp.begin(), dp.end());
 }
 
-// Iterative + Tabulation: Time => O(n*n) , Space => O(1) Improved constant space complexity
+// Iterative + Tabulation: Time => O(n*n) , Space => O(1) with constant space complexity
 int minimumTotal(vector < vector < int >> & triangle) {
     for (int i = 1; i < triangle.size(); i++) {
         triangle[i][0] += triangle[i - 1][0];
